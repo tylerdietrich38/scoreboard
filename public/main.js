@@ -22,7 +22,8 @@ function main() {
   let scoreCounter = 0
   function updateTeam1ScoreAdd() {
     if (scoreCounter > 20) {
-      window.alert('Thats a mercy rule!!')
+      clearInterval(interval)
+      return
     }
     scoreCounter++
     const addScore = document.querySelector('.team1 h3')
@@ -30,17 +31,41 @@ function main() {
   }
   document.querySelector('.add').addEventListener('click', updateTeam1ScoreAdd)
 
-  // let scoreCounter = 0
-  // function updateTeam1ScoreSubtract() {
+  function updateTeam1ScoreSubtract() {
+    if (scoreCounter <= 0) {
+      clearInterval(interval)
+      return
+    }
+    scoreCounter--
+    const subtractScore = document.querySelector('.team1 h3')
+    subtractScore.textContent = scoreCounter
+  }
+  document
+    .querySelector('.subtract')
+    .addEventListener('click', updateTeam1ScoreSubtract)
+
+  // function updateTeam2ScoreAdd() {
+  //   if (scoreCounter > 20) {
+  //     clearInterval(interval)
+  //     return
+  //   }
+  //   scoreCounter++
+  //   const add1Score = document.querySelector('.team2 h3')
+  //   add1Score.textContent = scoreCounter
+  // }
+  // document.querySelector('.add').addEventListener('click', updateTeam2ScoreAdd)
+
+  // function updateTeam2ScoreSubtract() {
   //   if (scoreCounter < 0) {
-  //     window.alert('No No No!!')
+  //     clearInterval(interval)
+  //     return
   //   }
   //   scoreCounter--
-  //   const subtractScore = document.querySelector('.team1 h3')
-  //   subtractScore.textContent = scoreCounter
+  //   const subtract1Score = document.querySelector('.team2 h3')
+  //   subtract1Score.textContent = scoreCounter
   // }
   // document
   //   .querySelector('.subtract')
-  //   .addEventListener('click', updateTeam1ScoreSubtract)
+  //   .addEventListener('click', updateTeam2ScoreSubtract)
 }
 document.addEventListener('DOMContentLoaded', main)
