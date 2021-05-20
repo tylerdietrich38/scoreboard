@@ -22,6 +22,7 @@ function main() {
   let scoreCounter = 0
   function updateTeam1ScoreAdd() {
     if (scoreCounter > 20) {
+      window.alert(`Your team has won!`)
       clearInterval(interval)
       return
     }
@@ -44,28 +45,37 @@ function main() {
     .querySelector('.subtract')
     .addEventListener('click', updateTeam1ScoreSubtract)
 
-  // function updateTeam2ScoreAdd() {
-  //   if (scoreCounter > 20) {
-  //     clearInterval(interval)
-  //     return
-  //   }
-  //   scoreCounter++
-  //   const add1Score = document.querySelector('.team2 h3')
-  //   add1Score.textContent = scoreCounter
-  // }
-  // document.querySelector('.add').addEventListener('click', updateTeam2ScoreAdd)
+  function updateTeam2ScoreAdd() {
+    if (scoreCounterTwo > 20) {
+      window.alert(`Your team has won!`)
+      clearInterval(interval)
+      return
+    }
+    scoreCounterTwo++
+    const addScoreTwo = document.querySelector('.team2 h3')
+    addScoreTwo.textContent = scoreCounterTwo
+  }
+  document.querySelector('.add').addEventListener('click', updateTeam2ScoreAdd)
 
-  // function updateTeam2ScoreSubtract() {
-  //   if (scoreCounter < 0) {
-  //     clearInterval(interval)
-  //     return
-  //   }
-  //   scoreCounter--
-  //   const subtract1Score = document.querySelector('.team2 h3')
-  //   subtract1Score.textContent = scoreCounter
-  // }
-  // document
-  //   .querySelector('.subtract')
-  //   .addEventListener('click', updateTeam2ScoreSubtract)
+  function updateTeam2ScoreSubtract() {
+    if (scoreCounterTwo < 0) {
+      clearInterval(interval)
+      return
+    }
+    scoreCounterTwo--
+    const subtractScoreTwo = document.querySelector('.team2 h3')
+    subtractScoreTwo.textContent = scoreCounterTwo
+  }
+  document
+    .querySelector('.subtract')
+    .addEventListener('click', updateTeam2ScoreSubtract)
+
+  function resetScore() {
+    scoreCounter = document.querySelector('.team1 h3')
+    scoreCounter = 0
+    scoreCounterTwo = document.querySelector('.team2 h3')
+    scoreCounterTwo = 0
+  }
+  document.querySelector('button').addEventListener('click', resetScore)
 }
 document.addEventListener('DOMContentLoaded', main)

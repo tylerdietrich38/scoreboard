@@ -71,3 +71,13 @@ fieldset i.add {
 fieldset i.subtract {
   color: #f8e00a;
 }
+
+footer {
+  text-align: center;
+  font-family: Monospace;
+  margin: 1rem 0 3rem 0;
+}
+
+button {
+  font-size: 18px;
+}
